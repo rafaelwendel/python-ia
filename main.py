@@ -24,4 +24,5 @@ def search():
     return {'message': output.text}
 
 
-app.run(debug=os.getenv('FLASK_DEBUG'))
+if __name__ == '__main__':
+    app.run(debug=os.getenv('FLASK_DEBUG'))
