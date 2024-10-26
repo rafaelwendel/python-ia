@@ -24,4 +24,4 @@ def search():
     return {'message': output.text}
 
 
-app.run(debug=True)
+app.run(debug=os.getenv('FLASK_DEBUG'))
