@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Chatbot</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chatbot</h2>
+        </div>
+        <div class="chat-box" id="chatWindow">
+            <!-- Mensagens do chatbot aparecerão aqui -->
+        </div>
+        <input type="text" id="userInput" placeholder="Digite sua mensagem..." onkeypress="checkEnter(event)">
+        <button id="send-button">Enviar</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        document.getElementById('send-button').onclick = function() {
+            const input = document.getElementById('userInput');
+            const message = input.value;
+            if (message) {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<div class="user-message">${message}</div>`;
+                input.value = '';
+
+                // Simulação de resposta do chatbot
+                setTimeout(() => {
+                    chatBox.innerHTML += `<div class="bot-message">Você disse: ${message}</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 500);
+            }
+        };
+    </script>
+</body>
+</html>
